@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Digital Banking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-university"></i>
+                <h1>SecureBank</h1>
+            </div>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Welcome, User</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Account Card Display -->
+            <section class="account-card-section">
+                <!-- Single Card View -->
+                <div class="single-card-view" id="singleCardView">
+                    <div class="account-card" id="accountCard">
+                        <div class="card-header">
+                            <div class="card-logo">
+                                <i class="fas fa-credit-card"></i>
+                                <span>SecureBank</span>
+                            </div>
+                            <div class="card-type">PREMIUM</div>
+                        </div>
+                        <div class="card-number" id="cardNumber">**** **** ****</div>
+                        <div class="card-info">
+                            <div class="card-holder">
+                                <span class="label">CARD HOLDER</span>
+                                <span class="value" id="cardHolderName">SELECT ACCOUNT</span>
+                            </div>
+                            <div class="card-balance">
+                                <span class="label">BALANCE</span>
+                                <span class="value" id="cardBalance">₹0.00</span>
+                            </div>
+                        </div>
+                        <div class="card-chip">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dual Card View for Transfers -->
+                <div class="dual-card-view" id="dualCardView" style="display: none;">
+                    <div class="transfer-cards-container">
+                        <div class="transfer-card-wrapper">
+                            <h4 class="card-title">From Account</h4>
+                            <div class="account-card transfer-card" id="fromCard">
+                                <div class="card-header">
+                                    <div class="card-logo">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>SecureBank</span>
+                                    </div>
+                                    <div class="card-type">SENDER</div>
+                                </div>
+                                <div class="card-number" id="fromCardNumber">**** **** ****</div>
+                                <div class="card-info">
+                                    <div class="card-holder">
+                                        <span class="label">CARD HOLDER</span>
+                                        <span class="value" id="fromCardHolderName">ENTER FROM ACCOUNT</span>
+                                    </div>
+                                    <div class="card-balance">
+                                        <span class="label">BALANCE</span>
+                                        <span class="value" id="fromCardBalance">₹0.00</span>
+                                    </div>
+                                </div>
+                                <div class="card-chip">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="transfer-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+
+                        <div class="transfer-card-wrapper">
+                            <h4 class="card-title">To Account</h4>
+                            <div class="account-card transfer-card" id="toCard">
+                                <div class="card-header">
+                                    <div class="card-logo">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>SecureBank</span>
+                                    </div>
+                                    <div class="card-type">RECEIVER</div>
+                                </div>
+                                <div class="card-number" id="toCardNumber">**** **** ****</div>
+                                <div class="card-info">
+                                    <div class="card-holder">
+                                        <span class="label">CARD HOLDER</span>
+                                        <span class="value" id="toCardHolderName">ENTER TO ACCOUNT</span>
+                                    </div>
+                                    <div class="card-balance">
+                                        <span class="label">BALANCE</span>
+                                        <span class="value" id="toCardBalance">₹0.00</span>
+                                    </div>
+                                </div>
+                                <div class="card-chip">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Operations Panel -->
+            <!-- <section class="operations-panel">
+                <div class="operation-tabs">
+                    <button class="tab-btn active" data-tab="create">
+                        <i class="fas fa-plus-circle"></i>
+                        Create Account
+                    </button>
+                    <button class="tab-btn" data-tab="manage">
+                        <i class="fas fa-cog"></i>
+                        Manage Account
+                    </button>
+                    <button class="tab-btn" data-tab="transactions">
+                        <i class="fas fa-exchange-alt"></i>
+                        Transactions
+                    </button>
+                </div>
+                <div class="account-card" id="accountCard">
+                    <div class="card-header">
+                        <div class="card-logo">
+                            <i class="fas fa-credit-card"></i>
+                            <span>SecureBank</span>
+                        </div>
+                        <div class="card-type">PREMIUM</div>
+                    </div>
+                    <div class="card-number" id="cardNumber">**** **** ****</div>
+                    <div class="card-info">
+                        <div class="card-holder">
+                            <span class="label">CARD HOLDER</span>
+                            <span class="value" id="cardHolderName">SELECT ACCOUNT</span>
+                        </div>
+                        <div class="card-balance">
+                            <span class="label">BALANCE</span>
+                            <span class="value" id="cardBalance">₹0.00</span>
+                        </div>
+                    </div>
+                    <div class="card-chip">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Operations Panel -->
+            <section class="operations-panel">
+                <div class="operation-tabs">
+                    <button class="tab-btn active" data-tab="create">
+                        <i class="fas fa-plus-circle"></i>
+                        Create Account
+                    </button>
+                    <button class="tab-btn" data-tab="manage">
+                        <i class="fas fa-cog"></i>
+                        Manage Account
+                    </button>
+                    <button class="tab-btn" data-tab="transactions">
+                        <i class="fas fa-exchange-alt"></i>
+                        Transactions
+                    </button>
+                </div>
+
+                <!-- Create Account Tab -->
+                <div class="tab-content active" id="create">
+                    <div class="form-card">
+                        <h3><i class="fas fa-user-plus"></i> Create New Account</h3>
+                        <form id="createAccountForm">
+                            <div class="form-group">
+                                <label for="newAccountNumber">Account Number</label>
+                                <input type="text" id="newAccountNumber" placeholder="Enter 12-digit account number" maxlength="12" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newAccountHolderName">Account Holder Name</label>
+                                <input type="text" id="newAccountHolderName" placeholder="Enter full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="initialBalance">Initial Balance</label>
+                                <input type="number" id="initialBalance" placeholder="Enter initial balance" min="0" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                Create Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Manage Account Tab -->
+                <div class="tab-content" id="manage">
+                    <div class="form-card">
+                        <h3><i class="fas fa-search"></i> Account Lookup</h3>
+                        <form id="getAccountForm">
+                            <div class="form-group">
+                                <label for="searchAccountNumber">Account Number</label>
+                                <input type="text" id="searchAccountNumber" placeholder="Enter account number" maxlength="12" required>
+                            </div>
+                            <button type="submit" class="btn btn-secondary">
+                                <i class="fas fa-search"></i>
+                                Get Account Info
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="form-card">
+                        <h3><i class="fas fa-edit"></i> Update Account</h3>
+                        <form id="updateAccountForm">
+                            <div class="form-group">
+                                <label for="updateAccountNumber">Account Number</label>
+                                <input type="text" id="updateAccountNumber" placeholder="Enter account number" maxlength="12" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="updateAccountHolderName">New Account Holder Name</label>
+                                <input type="text" id="updateAccountHolderName" placeholder="Enter new name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="updateBalance">Current Balance</label>
+                                <input type="number" id="updateBalance" placeholder="Enter current balance" min="0" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Update Account
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="form-card danger">
+                        <h3><i class="fas fa-trash"></i> Delete Account</h3>
+                        <form id="deleteAccountForm">
+                            <div class="form-group">
+                                <label for="deleteAccountNumber">Account Number</label>
+                                <input type="text" id="deleteAccountNumber" placeholder="Enter account number" maxlength="12" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Delete Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Transactions Tab -->
+                <div class="tab-content" id="transactions">
+                    <div class="transaction-cards">
+                        <div class="form-card">
+                            <h3><i class="fas fa-plus-circle"></i> Deposit Money</h3>
+                            <form id="depositForm">
+                                <div class="form-group">
+                                    <label for="depositAccountNumber">Account Number</label>
+                                    <input type="text" id="depositAccountNumber" placeholder="Enter account number" maxlength="12" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="depositAmount">Amount</label>
+                                    <input type="number" id="depositAmount" placeholder="Enter amount to deposit" min="0.01" step="0.01" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-plus-circle"></i>
+                                    Deposit
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="form-card">
+                            <h3><i class="fas fa-minus-circle"></i> Withdraw Money</h3>
+                            <form id="withdrawForm">
+                                <div class="form-group">
+                                    <label for="withdrawAccountNumber">Account Number</label>
+                                    <input type="text" id="withdrawAccountNumber" placeholder="Enter account number" maxlength="12" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="withdrawAmount">Amount</label>
+                                    <input type="number" id="withdrawAmount" placeholder="Enter amount to withdraw" min="0.01" step="0.01" required>
+                                </div>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fas fa-minus-circle"></i>
+                                    Withdraw
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="form-card transfer">
+                            <h3><i class="fas fa-exchange-alt"></i> Transfer Money</h3>
+                            <form id="transferForm">
+                                <div class="form-group">
+                                    <label for="fromAccount">From Account</label>
+                                    <input type="text" id="fromAccount" placeholder="Enter sender account number" maxlength="12" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="toAccount">To Account</label>
+                                    <input type="text" id="toAccount" placeholder="Enter receiver account number" maxlength="12" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="transferAmount">Amount</label>
+                                    <input type="number" id="transferAmount" placeholder="Enter amount to transfer" min="0.01" step="0.01" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Transfer
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Notification Toast -->
+        <div class="toast" id="toast">
+            <div class="toast-content">
+                <i class="toast-icon"></i>
+                <span class="toast-message"></span>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Processing...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
